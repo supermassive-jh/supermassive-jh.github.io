@@ -1,23 +1,23 @@
-import { useMemo, useState } from "react";
-import { AppSidebar } from "./layout/AppSidebar";
-import { SidebarInset, SidebarTrigger } from "./components/ui/sidebar";
-import { Input } from "./components/ui/input";
-import { ModeToggle } from "./components/mode-toggle";
-import { posts } from "./data/posts";
+import { useMemo, useState } from "react"
+import { AppSidebar } from "./layout/AppSidebar"
+import { SidebarInset, SidebarTrigger } from "./components/ui/sidebar"
+import { Input } from "./components/ui/input"
+import { ModeToggle } from "./components/mode-toggle"
+import { posts } from "./data/posts"
 
 export default function App() {
-  const [activeCategory, setActiveCategory] = useState("전체");
-  const [query, setQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState("전체")
+  const [query, setQuery] = useState("")
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = query.trim().toLowerCase()
     return posts.filter((post) => {
       const matchesCategory =
-        activeCategory === "전체" || post.category === activeCategory;
-      const matchesQuery = !q || post.title.toLowerCase().includes(q);
-      return matchesCategory && matchesQuery;
-    });
-  }, [activeCategory, query]);
+        activeCategory === "전체" || post.category === activeCategory
+      const matchesQuery = !q || post.title.toLowerCase().includes(q)
+      return matchesCategory && matchesQuery
+    })
+  }, [activeCategory, query])
 
   return (
     <>
@@ -96,5 +96,5 @@ export default function App() {
         </main>
       </SidebarInset>
     </>
-  );
+  )
 }

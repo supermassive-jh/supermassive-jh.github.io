@@ -9,22 +9,25 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { posts } from "@/data/posts";
+} from "@/components/ui/sidebar"
+import { posts } from "@/data/posts"
 
 const categoryCounts = posts.reduce<Record<string, number>>((acc, post) => {
-  acc[post.category] = (acc[post.category] ?? 0) + 1;
-  return acc;
-}, {});
+  acc[post.category] = (acc[post.category] ?? 0) + 1
+  return acc
+}, {})
 
-const categories = ["전체", ...Object.keys(categoryCounts)];
+const categories = ["전체", ...Object.keys(categoryCounts)]
 
 interface AppSidebarProps {
-  activeCategory: string;
-  onCategoryChange: (category: string) => void;
+  activeCategory: string
+  onCategoryChange: (category: string) => void
 }
 
-export function AppSidebar({ activeCategory, onCategoryChange }: AppSidebarProps) {
+export function AppSidebar({
+  activeCategory,
+  onCategoryChange,
+}: AppSidebarProps) {
   return (
     <Sidebar>
       <SidebarHeader>
@@ -45,7 +48,9 @@ export function AppSidebar({ activeCategory, onCategoryChange }: AppSidebarProps
                   >
                     <span>{category}</span>
                     <span className="ml-auto font-mono text-xs tabular-nums text-muted-foreground">
-                      {category === "전체" ? posts.length : categoryCounts[category]}
+                      {category === "전체"
+                        ? posts.length
+                        : categoryCounts[category]}
                     </span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -60,5 +65,5 @@ export function AppSidebar({ activeCategory, onCategoryChange }: AppSidebarProps
         </div>
       </SidebarFooter>
     </Sidebar>
-  );
+  )
 }
