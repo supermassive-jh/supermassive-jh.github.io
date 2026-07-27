@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom"
 import {
   Sidebar,
   SidebarContent,
@@ -9,6 +10,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import { posts } from "@/data/posts"
 
@@ -28,23 +30,46 @@ export function AppSidebar({
   activeCategory,
   onCategoryChange,
 }: AppSidebarProps) {
+  const { isMobile, setOpenMobile } = useSidebar()
+  const navigate = useNavigate()
+
+  const handleCategoryClick = (category: string) => {
+    onCategoryChange(category)
+    navigate("/")
+    if (isMobile) {
+      setOpenMobile(false)
+    }
+  }
+
+  const handleTitleClick = () => {
+    onCategoryChange("전체")
+    if (isMobile) {
+      setOpenMobile(false)
+    }
+  }
+
   return (
     <Sidebar>
       <SidebarHeader>
-        <div className="px-2 py-1.5 font-mono text-sm">
+        <Link
+          to="/"
+          onClick={handleTitleClick}
+          className="block px-2 py-1.5 font-mono text-sm hover:text-primary"
+        >
           supermassive<span className="text-primary">.</span>log
-        </div>
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Filter</SidebarGroupLabel>
+          <SidebarGroupLabel>주제</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {categories.map((category) => (
                 <SidebarMenuItem key={category}>
                   <SidebarMenuButton
+                    className="cursor-pointer"
                     isActive={activeCategory === category}
-                    onClick={() => onCategoryChange(category)}
+                    onClick={() => handleCategoryClick(category)}
                   >
                     <span>{category}</span>
                     <span className="ml-auto font-mono text-xs tabular-nums text-muted-foreground">
