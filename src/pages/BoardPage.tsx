@@ -48,7 +48,7 @@ export default function BoardPage() {
             <div className="py-6">
               <Link
                 to={`/post/${post.slug}`}
-                className="text-lg font-semibold tracking-tight hover:text-primary"
+                className="break-words text-lg font-semibold tracking-tight hover:text-primary"
               >
                 {post.title}
               </Link>

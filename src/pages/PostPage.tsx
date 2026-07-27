@@ -1,8 +1,22 @@
+import type { ComponentProps } from "react"
 import { Link, useParams } from "react-router-dom"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { posts } from "../data/posts"
 import { getPostContent } from "../lib/content"
+
+const markdownComponents = {
+  pre: ({ children }: ComponentProps<"pre">) => (
+    <div className="overflow-x-auto">
+      <pre>{children}</pre>
+    </div>
+  ),
+  table: ({ children, ...props }: ComponentProps<"table">) => (
+    <div className="overflow-x-auto">
+      <table {...props}>{children}</table>
+    </div>
+  ),
+}
 
 export default function PostPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -30,7 +44,7 @@ export default function PostPage() {
       </Link>
 
       <header className="mt-4 mb-8 border-b pb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-balance">
+        <h1 className="text-3xl font-bold tracking-tight text-balance break-words">
           {post.title}
         </h1>
         <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -52,7 +66,12 @@ export default function PostPage() {
       </header>
 
       <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:tracking-tight prose-headings:text-balance prose-a:text-primary prose-code:before:content-none prose-code:after:content-none">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={markdownComponents}
+        >
+          {content}
+        </ReactMarkdown>
       </div>
     </article>
   )
