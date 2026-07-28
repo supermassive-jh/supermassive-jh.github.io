@@ -77,7 +77,7 @@ export default function PostPage() {
       </Link>
 
       <header className="mt-4 mb-8 border-b pb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-balance break-words">
+        <h1 className="text-3xl font-bold tracking-tight text-balance wrap-break-word">
           {post.title}
         </h1>
         <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -98,7 +98,7 @@ export default function PostPage() {
         </div>
       </header>
 
-      <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:tracking-tight prose-headings:text-balance prose-a:text-primary prose-code:before:content-none prose-code:after:content-none">
+      <div className="prose prose-neutral dark:prose-invert max-w-none prose-headings:tracking-tight prose-headings:text-balance prose-a:text-primary prose-code:before:content-none prose-code:after:content-none wrap-break-word">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={markdownComponents}
