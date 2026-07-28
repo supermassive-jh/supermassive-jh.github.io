@@ -1,15 +1,10 @@
 import { useMemo } from "react"
 import { Link, useOutletContext } from "react-router-dom"
 import { Input } from "../components/ui/input"
-import { posts } from "../data/posts"
+import { postsByNewest } from "../data/posts"
 import type { BoardContext } from "../layout/RootLayout"
 import { useDocumentMeta } from "@/hooks/use-document-meta"
 import { siteDescription, siteName } from "@/lib/site"
-
-const postsByNewest = posts
-  .map((post, index) => ({ post, index }))
-  .sort((a, b) => b.post.date.localeCompare(a.post.date) || b.index - a.index)
-  .map(({ post }) => post)
 
 export default function BoardPage() {
   const { activeCategory, query, onQueryChange } =

@@ -2,7 +2,7 @@ import type { ComponentProps } from "react"
 import { Link, useParams } from "react-router-dom"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
-import { posts } from "../data/posts"
+import { posts, postsByNewest } from "../data/posts"
 import { getPostContent } from "../lib/content"
 import { CodeBlock } from "../components/code-block"
 import { useDocumentMeta } from "@/hooks/use-document-meta"
@@ -65,6 +65,11 @@ export default function PostPage() {
     )
   }
 
+  const currentIndex = postsByNewest.findIndex((p) => p.slug === post.slug)
+  const previousPost = postsByNewest[currentIndex + 1]
+  const nextPost =
+    currentIndex > 0 ? postsByNewest[currentIndex - 1] : undefined
+
   return (
     <article>
       <Link to="/" className="text-sm text-muted-foreground hover:text-primary">
@@ -101,6 +106,35 @@ export default function PostPage() {
           {content}
         </ReactMarkdown>
       </div>
+
+      {(previousPost || nextPost) && (
+        <nav className="mt-10 grid grid-cols-1 gap-4 border-t pt-6 sm:grid-cols-2">
+          <div>
+            {previousPost && (
+              <Link to={`/post/${previousPost.slug}`} className="group block">
+                <p className="mb-1 font-mono text-xs text-muted-foreground">
+                  ← 이전 글
+                </p>
+                <p className="break-words text-sm font-medium group-hover:text-primary">
+                  {previousPost.title}
+                </p>
+              </Link>
+            )}
+          </div>
+          <div className="sm:text-right">
+            {nextPost && (
+              <Link to={`/post/${nextPost.slug}`} className="group block">
+                <p className="mb-1 font-mono text-xs text-muted-foreground">
+                  다음 글 →
+                </p>
+                <p className="break-words text-sm font-medium group-hover:text-primary">
+                  {nextPost.title}
+                </p>
+              </Link>
+            )}
+          </div>
+        </nav>
+      )}
     </article>
   )
 }

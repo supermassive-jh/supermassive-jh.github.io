@@ -98,3 +98,8 @@ export const posts: Post[] = [
     tags: ["BFF", "트러블슈팅"],
   },
 ]
+
+export const postsByNewest = posts
+  .map((post, index) => ({ post, index }))
+  .sort((a, b) => b.post.date.localeCompare(a.post.date) || b.index - a.index)
+  .map(({ post }) => post)
