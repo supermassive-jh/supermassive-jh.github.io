@@ -3,14 +3,26 @@ import { Link, useOutletContext } from "react-router-dom"
 import { Input } from "../components/ui/input"
 import { posts } from "../data/posts"
 import type { BoardContext } from "../layout/RootLayout"
+import { useDocumentMeta } from "@/hooks/use-document-meta"
+import { siteDescription, siteName } from "@/lib/site"
+
+const postsByNewest = posts
+  .map((post, index) => ({ post, index }))
+  .sort((a, b) => b.post.date.localeCompare(a.post.date) || b.index - a.index)
+  .map(({ post }) => post)
 
 export default function BoardPage() {
   const { activeCategory, query, onQueryChange } =
     useOutletContext<BoardContext>()
 
+  useDocumentMeta({
+    title: `${siteName} — 기록하고 배포하는 것들`,
+    description: siteDescription,
+  })
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
-    return posts.filter((post) => {
+    return postsByNewest.filter((post) => {
       const matchesCategory =
         activeCategory === "전체" || post.category === activeCategory
       const matchesQuery = !q || post.title.toLowerCase().includes(q)

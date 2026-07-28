@@ -1,8 +1,8 @@
-[지난 글](/#/post/observer-pattern-and-react-rerender)에서 순수 JS store를 직접 만들어보고, Zustand가 그걸 React 리렌더링과 이어주는 배선이라는 걸 확인했다. 그럼 Redux, Recoil, Jotai는 뭐가 다른 걸까. 공통점부터 보면 답이 꽤 명확해진다.
+[지난 글](/post/observer-pattern-and-react-rerender)에서 순수 JS store를 직접 만들어보고, Zustand가 그걸 React 리렌더링과 이어주는 배선이라는 걸 확인했다. 그럼 Redux, Recoil, Jotai는 뭐가 다른 걸까. 공통점부터 보면 답이 꽤 명확해진다.
 
 ## 공통점: 전부 같은 문제를 푼다
 
-```
+```text
 클로저/모듈로 상태 저장 (지난 글들에서 다룬 개념)
         +
 React가 그 변화를 감지해서 리렌더링하게 만드는 배선
