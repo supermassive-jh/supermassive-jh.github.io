@@ -33,8 +33,8 @@ export default function BoardPage() {
           기록하고 배포하는 것들
         </h1>
         <p className="mt-2 max-w-prose text-muted-foreground">
-          정적 사이트 하나를 굴리면서 부딪힌 문제와 결정들을 남깁니다. 댓글은
-          없고, 방문 기록은 저만 봅니다.
+          시행착오를 문서로 바꾸는 공간입니다. 작은 프로젝트와 개발 기록을
+          차곡차곡 쌓아갑니다.
         </p>
       </div>
 
