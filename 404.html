@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>supermassive-log</title>
+    <script type="text/javascript">
+      // GitHub Pages는 정적 호스팅이라 /post/slug 같은 경로를 직접 요청하면
+      // 서버가 이 404.html을 대신 돌려준다. 여기서 원래 요청한 경로를
+      // 쿼리스트링에 인코딩해 index.html로 리다이렉트하고, index.html이
+      // 그 값을 다시 원래 경로로 복원해 React Router가 정상적으로 처리하게 한다.
+      // (https://github.com/rafgraph/spa-github-pages)
+      var segmentCount = 0;
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          "//" +
+          l.hostname +
+          (l.port ? ":" + l.port : "") +
+          l.pathname
+            .split("/")
+            .slice(0, 1 + segmentCount)
+            .join("/") +
+          "/?/" +
+          l.pathname
+            .slice(1)
+            .split("/")
+            .slice(segmentCount)
+            .join("/")
+            .replace(/&/g, "~and~") +
+          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+          l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

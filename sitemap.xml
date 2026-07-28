@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://supermassive-jh.github.io/</loc>
+  </url>
+  <url>
+    <loc>https://supermassive-jh.github.io/post/closure-and-memory-leaks</loc>
+  </url>
+  <url>
+    <loc>https://supermassive-jh.github.io/post/class-alternatives-in-js</loc>
+  </url>
+  <url>
+    <loc>https://supermassive-jh.github.io/post/observer-pattern-and-react-rerender</loc>
+  </url>
+  <url>
+    <loc>https://supermassive-jh.github.io/post/state-management-library-comparison</loc>
+  </url>
+  <url>
+    <loc>https://supermassive-jh.github.io/post/spring-session-auth-basics</loc>
+  </url>
+  <url>
+    <loc>https://supermassive-jh.github.io/post/spring-security-config-and-login</loc>
+  </url>
+  <url>
+    <loc>https://supermassive-jh.github.io/post/spring-nextjs-bff-backend</loc>
+  </url>
+  <url>
+    <loc>https://supermassive-jh.github.io/post/nextjs-bff-frontend</loc>
+  </url>
+  <url>
+    <loc>https://supermassive-jh.github.io/post/bff-troubleshooting-and-todo</loc>
+  </url>
+</urlset>
