@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { siteUrl } from "@/lib/site"
+import { trackPageView } from "@/lib/gtag"
 
 interface DocumentMeta {
   title: string
@@ -46,5 +47,7 @@ export function useDocumentMeta({ title, description }: DocumentMeta) {
       document.head.appendChild(canonical)
     }
     canonical.setAttribute("href", siteUrl + window.location.pathname)
+
+    trackPageView(title)
   }, [title, description])
 }
