@@ -19,6 +19,21 @@
     />
     <meta property="og:url" content="https://supermassive-jh.github.io/" />
     <meta name="twitter:card" content="summary" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-E9BHDMR688"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
+      // 라우트 이동마다 useDocumentMeta 훅이 직접 page_view를 보내므로,
+      // 최초 로드 시 자동 전송되는 page_view는 꺼서 중복 집계를 막는다.
+      gtag("config", "G-E9BHDMR688", { send_page_view: false })
+    </script>
     <script type="text/javascript">
       // 404.html이 인코딩해서 넘긴 원래 경로를 복원한다.
       // (https://github.com/rafgraph/spa-github-pages)
@@ -39,7 +54,7 @@
         }
       })(window.location)
     </script>
-    <script type="module" crossorigin src="/assets/index-OVXppBJm.js"></script>
+    <script type="module" crossorigin src="/assets/index-CZ_mWTE-.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-B50_7bjr.css">
   </head>
   <body>
